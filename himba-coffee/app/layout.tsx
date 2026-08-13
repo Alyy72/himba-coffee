@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s — Himba Coffee",
   },
   description:
-    "The ultimate French Press travel tumbler. Customize yours and order via WhatsApp for 99 AED.",
+    "The ultimate French Press travel tumbler. Customize yours and order via WhatsApp from 99 AED.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

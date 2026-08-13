@@ -10,6 +10,7 @@ type ProductCardProps = {
   index: number;
 };
 
+/** Legacy tumbler-only card — kept for any remaining imports. Prefer CatalogProductCard. */
 export function ProductCard({ color, index }: ProductCardProps) {
   const orderUrl = buildWhatsAppStandardOrderUrl(color);
 
@@ -55,7 +56,7 @@ export function ProductCard({ color, index }: ProductCardProps) {
           rel="noopener noreferrer"
           className="mt-6 inline-flex h-12 w-full items-center justify-center border border-white/20 text-[11px] font-medium tracking-[0.16em] text-white/80 uppercase transition-colors duration-300 hover:border-white/45 hover:bg-white hover:text-[#0A0A0A]"
         >
-          Add to Order
+          Order via WhatsApp
         </a>
       </div>
     </motion.article>
