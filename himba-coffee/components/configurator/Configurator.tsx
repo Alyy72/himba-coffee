@@ -27,9 +27,9 @@ export function Configurator() {
 
   useEffect(() => {
     const sources = new Set([
-      "/base-black.png",
-      "/base-white.png",
-      "/base-pink.png",
+      "/products/matte-black-base.png",
+      "/products/snow-white-base.png",
+      "/products/himalayan-pink-base.png",
       ...TUMBLER_VARIANTS.map((option) => toTumblerVisual(option).image),
     ]);
     sources.forEach((src) => {

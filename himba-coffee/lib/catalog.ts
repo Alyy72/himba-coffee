@@ -53,26 +53,26 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 99,
     category: "tumblers",
     description: "French Press travel tumbler in matte black. Steep. Press. Enjoy.",
-    image: "/products/tumbler-black.png",
-    gallery: ["/products/tumbler-black.png"],
+    image: "/products/matte-black-tumbler.png",
+    gallery: ["/products/matte-black-tumbler.png"],
   },
   {
     id: "tumbler-snow-white",
     name: "Himba Tumbler — Snow White",
     priceAed: 99,
     category: "tumblers",
-    description: "French Press travel tumbler in snow white with black lid accents.",
-    image: "/products/tumbler-white.png",
-    gallery: ["/products/tumbler-white.png"],
+    description: "French Press travel tumbler in Snow White with black lid accents.",
+    image: "/products/snow-white-tumbler.png",
+    gallery: ["/products/snow-white-tumbler.png"],
   },
   {
     id: "tumbler-himalayan-pink",
     name: "Himba Tumbler — Himalayan Pink",
     priceAed: 99,
     category: "tumblers",
-    description: "French Press travel tumbler in soft Himalayan pink.",
-    image: "/products/tumbler-pink.png",
-    gallery: ["/products/tumbler-pink.png"],
+    description: "French Press travel tumbler in Himalayan Pink.",
+    image: "/products/himalayan-pink-tumbler.png",
+    gallery: ["/products/himalayan-pink-tumbler.png"],
   },
   {
     id: "coffee-tumbler-bundle",
@@ -97,7 +97,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
           },
           {
             id: "white",
-            label: "Pure White",
+            label: "Snow White",
             swatch: "#F4F4F2",
             image: "/products/bundle-white.png",
           },
@@ -193,6 +193,13 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     gallery: ["/products/moka-pot.png", "/products/moka-pot-red.png"],
   },
 ];
+
+export function catalogDisplayName(product: CatalogProduct) {
+  return product.name
+    .replace(/^Himba Tumbler — /, "")
+    .replace(/^Pitcher — /, "")
+    .replace("Coffee & Tumbler Bundle", "Coffee Bundle");
+}
 
 export function getProductsByCategory(category: ProductCategoryId) {
   return CATALOG_PRODUCTS.filter((p) => p.category === category);

@@ -1,0 +1,10 @@
+{
+  "name": "himba-coffee-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix himba-coffee",
+    "build": "npm run build --prefix himba-coffee",
+    "start": "npm run start --prefix himba-coffee",
+    "lint": "npm run lint --prefix himba-coffee"
+  }
+}

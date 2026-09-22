@@ -8,100 +8,94 @@ type GalleryShot = {
   title: string;
   caption: string;
   setting: string;
-  span: string;
-  tone: string;
-  image?: string;
+  /** Mobile height + asymmetric md placement */
+  className: string;
+  image: string;
+  alt: string;
 };
 
 const SHOTS: GalleryShot[] = [
   {
     id: "lavender-botanical",
     title: "Lavender Botanical",
-    caption: "Studio · soft violet light",
-    setting: "Himba tumbler in the wild",
-    span: "md:col-span-2 md:row-span-2",
-    tone: "linear-gradient(160deg, #d8c8e0 0%, #b8a0c4 55%, #7a6288 100%)",
+    caption: "Studio · violet hush",
+    setting: "Afternoon light, florals in relief",
+    className:
+      "min-h-[340px] sm:col-span-2 sm:min-h-[380px] md:col-span-7 md:row-span-2 md:min-h-[520px]",
     image: "/gallery/lavender-botanical.png",
+    alt: "Himba Coffee Lavender Botanical tumbler in soft violet studio light",
   },
   {
     id: "matte-black",
     title: "Matte Black",
-    caption: "Studio · stealth finish",
-    setting: "Himba tumbler in the wild",
-    span: "md:col-span-1 md:row-span-1",
-    tone: "linear-gradient(160deg, #1a1a1a 0%, #0c0c0c 55%, #222 100%)",
+    caption: "Studio · stealth grain",
+    setting: "Low light, powder-coat depth",
+    className:
+      "min-h-[220px] sm:min-h-[240px] md:col-span-5 md:min-h-[248px]",
     image: "/gallery/matte-black.png",
+    alt: "Himba Coffee Matte Black French Press tumbler against dark backdrop",
   },
   {
     id: "snow-white",
     title: "Snow White",
-    caption: "Studio · clean light",
-    setting: "Himba tumbler in the wild",
-    span: "md:col-span-1 md:row-span-1",
-    tone: "linear-gradient(160deg, #f0f0ec 0%, #cfcfc8 55%, #9a9a92 100%)",
+    caption: "Studio · alpine clean",
+    setting: "Bright field, enamel glow",
+    className:
+      "min-h-[260px] sm:min-h-[280px] md:col-span-5 md:min-h-[248px]",
     image: "/gallery/snow-white.png",
+    alt: "Himba Coffee Snow White tumbler on a luminous white field",
   },
   {
     id: "himalayan-pink",
     title: "Himalayan Pink",
-    caption: "Studio · soft blush",
-    setting: "Himba tumbler in the wild",
-    span: "md:col-span-2 md:row-span-1",
-    tone: "linear-gradient(160deg, #f0c9cd 0%, #d99299 55%, #a85d68 100%)",
+    caption: "Studio · mountain blush",
+    setting: "Warm cast, sunrise tone",
+    className:
+      "min-h-[300px] sm:col-span-2 sm:min-h-[320px] md:col-span-12 md:min-h-[300px]",
     image: "/gallery/himalayan-pink.png",
+    alt: "Himba Coffee Himalayan Pink tumbler with warm blush studio lighting",
   },
 ];
 
 export function GalleryGrid() {
   return (
-    <div className="grid auto-rows-[220px] grid-cols-1 gap-3 md:auto-rows-[240px] md:grid-cols-3 md:gap-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3 md:grid-cols-12 md:gap-4">
       {SHOTS.map((shot, index) => (
         <motion.article
           key={shot.id}
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
-            duration: 0.7,
-            delay: index * 0.06,
+            duration: 0.75,
+            delay: index * 0.07,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className={`group relative overflow-hidden bg-white ${shot.span}`}
+          className={`group relative overflow-hidden bg-[#F4F4F2] ${shot.className}`}
         >
-          {shot.image ? (
+          <motion.div
+            className="absolute inset-0"
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
             <Image
               src={shot.image}
-              alt={`${shot.title} Himba tumbler`}
+              alt={shot.alt}
               fill
-              sizes="(max-width: 768px) 100vw, 66vw"
-              className="object-contain object-center p-6 transition-transform duration-700 ease-out group-hover:scale-[1.03] md:p-8"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 70vw"
+              className="object-contain object-center p-6 sm:p-8"
               priority={index === 0}
             />
-          ) : (
-            <>
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-40 transition-opacity duration-500 group-hover:opacity-55"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.18), transparent 45%), radial-gradient(ellipse at 70% 80%, rgba(0,0,0,0.35), transparent 50%)",
-                }}
-              />
-              <div
-                aria-hidden
-                className="absolute top-1/2 left-1/2 h-[68%] w-[22%] -translate-x-1/2 -translate-y-1/2 rounded-[1.5rem] border border-white/15 bg-black/10 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-[1px]"
-              />
-            </>
-          )}
-
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent p-5 md:p-6">
-            <p className="text-[10px] tracking-[0.22em] text-white/55 uppercase">
+          </motion.div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-90" />
+          <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
+            <p className="font-sans text-[10px] tracking-[0.22em] text-white/60 uppercase">
               {shot.caption}
             </p>
-            <h3 className="mt-1.5 text-lg font-medium tracking-[-0.02em] text-white md:text-xl">
+            <h3 className="font-display mt-1.5 text-xl font-medium tracking-[-0.02em] text-white md:text-2xl">
               {shot.title}
             </h3>
-            <p className="mt-1 text-xs text-white/40">{shot.setting}</p>
+            <p className="mt-1 text-xs text-white/45">{shot.setting}</p>
           </div>
         </motion.article>
       ))}

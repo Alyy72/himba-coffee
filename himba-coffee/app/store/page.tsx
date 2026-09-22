@@ -10,14 +10,8 @@ export const metadata: Metadata = {
 
 export default function StorePage() {
   return (
-    <main className="flex-1">
-      <section className="relative overflow-hidden bg-[#0A0A0A] px-6 pt-28 pb-20 md:px-10 md:pt-32 md:pb-28">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_35%_at_80%_0%,rgba(255,255,255,0.05),transparent_50%)]"
-        />
-        <StoreCatalog />
-      </section>
+    <main className="flex-1 bg-[#F3F3F3]">
+      <StoreCatalog />
       <SiteFooter />
     </main>
   );

@@ -54,10 +54,8 @@ export function Navbar() {
         <motion.nav
           layout
           className={cn(
-            "pointer-events-auto relative flex w-full max-w-3xl items-center gap-2 rounded-full border px-2 py-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl transition-[background-color,border-color,box-shadow] duration-500 sm:px-2.5 sm:py-2",
-            scrolled
-              ? "border-white/18 bg-[#0A0A0A]/78 shadow-[0_18px_50px_rgba(0,0,0,0.45)]"
-              : "border-white/14 bg-white/[0.08]",
+            "pointer-events-auto relative flex w-full max-w-3xl items-center gap-2 rounded-full border border-white/10 bg-[#0A0A0A] px-2 py-1.5 shadow-[0_18px_50px_rgba(0,0,0,0.45)] transition-[box-shadow] duration-500 sm:px-2.5 sm:py-2",
+            scrolled && "shadow-[0_22px_60px_rgba(0,0,0,0.55)]",
           )}
           aria-label="Primary"
         >
@@ -86,10 +84,10 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "relative z-10 block rounded-full px-3.5 py-2 text-[10px] tracking-[0.18em] uppercase transition-colors duration-300 sm:px-4 sm:text-[11px]",
+                      "relative z-10 block rounded-full px-3.5 py-2 text-[10px] tracking-[0.18em] uppercase transition-colors duration-300 outline-none focus-visible:ring-2 focus-visible:ring-white/70 sm:px-4 sm:text-[11px]",
                       active
                         ? "text-[#0A0A0A]"
-                        : "text-white/55 hover:text-white",
+                        : "text-white/80 hover:text-white",
                     )}
                   >
                     {active && (

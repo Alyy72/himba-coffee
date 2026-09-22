@@ -6,9 +6,9 @@ export const WHATSAPP_NUMBER = "971542943920";
 export const ENGRAVING_MAX_LENGTH = 16;
 
 export type BaseBottleImage =
-  | "/base-black.png"
-  | "/base-white.png"
-  | "/base-pink.png";
+  | "/products/matte-black-base.png"
+  | "/products/snow-white-base.png"
+  | "/products/himalayan-pink-base.png";
 
 export type TumblerColor = {
   id: TumblerColorId;
@@ -38,7 +38,7 @@ export type TumblerVariant = {
   id: number;
   name: string;
   /** Real product photo in /public */
-  image: `/variant-${number}.png`;
+  image: `/${string}.png`;
   /** Fallback product photo if a variant PNG is missing */
   baseImage: BaseBottleImage;
   category: TumblerVariantCategoryId;
@@ -83,12 +83,12 @@ function variant(
   category: TumblerVariantCategoryId,
   swatch: string,
   baseImage: BaseBottleImage,
-  options?: { engravingOnLight?: boolean },
+  options?: { engravingOnLight?: boolean; image?: `/${string}.png` },
 ): TumblerVariant {
   return {
     id,
     name,
-    image: `/variant-${id}.png`,
+    image: options?.image ?? `/variant-${id}.png`,
     baseImage,
     category,
     swatch,
@@ -98,23 +98,25 @@ function variant(
 }
 
 export const TUMBLER_VARIANTS: TumblerVariant[] = [
-  variant(2, "Silver Leopard", "leopard-prints", "#B8B8B8", "/base-black.png"),
-  variant(3, "Ocean Blue Leopard", "leopard-prints", "#46A0D8", "/base-white.png", {
+  variant(2, "Silver Leopard", "leopard-prints", "#B8B8B8", "/products/matte-black-base.png"),
+  variant(3, "Ocean Blue Leopard", "leopard-prints", "#46A0D8", "/products/snow-white-base.png", {
     engravingOnLight: true,
   }),
-  variant(4, "Royal Purple Leopard", "leopard-prints", "#5F2840", "/base-black.png"),
-  variant(5, "Rainbow Neon", "leopard-prints", "#FF78B4", "/base-black.png"),
-  variant(6, "Lavender Botanical", "soft-botanical", "#D2BEE1", "/base-white.png", {
+  variant(4, "Royal Purple Leopard", "leopard-prints", "#5F2840", "/products/matte-black-base.png"),
+  variant(5, "Rainbow Neon", "leopard-prints", "#FF78B4", "/products/matte-black-base.png"),
+  variant(6, "Lavender Botanical", "soft-botanical", "#D2BEE1", "/products/snow-white-base.png", {
     engravingOnLight: true,
+    image: "/products/lavender-botanical-variant.png",
   }),
-  variant(7, "Himalayan Pink", "soft-botanical", "#F895AB", "/base-pink.png", {
+  variant(7, "Himalayan Pink", "soft-botanical", "#F895AB", "/products/himalayan-pink-base.png", {
     engravingOnLight: true,
+    image: "/products/himalayan-pink-variant.png",
   }),
-  variant(8, "Deep Navy", "solids-metallics", "#142850", "/base-black.png"),
-  variant(9, "Burgundy", "solids-metallics", "#4C0A16", "/base-black.png"),
-  variant(10, "Crimson Metallic", "solids-metallics", "#6E0A14", "/base-black.png"),
-  variant(11, "Rose Copper", "solids-metallics", "#AA796A", "/base-pink.png"),
-  variant(12, "Mint Green", "soft-botanical", "#88D3B5", "/base-white.png", {
+  variant(8, "Deep Navy", "solids-metallics", "#142850", "/products/matte-black-base.png"),
+  variant(9, "Burgundy", "solids-metallics", "#4C0A16", "/products/matte-black-base.png"),
+  variant(10, "Crimson Metallic", "solids-metallics", "#6E0A14", "/products/matte-black-base.png"),
+  variant(11, "Rose Copper", "solids-metallics", "#AA796A", "/products/himalayan-pink-base.png"),
+  variant(12, "Mint Green", "soft-botanical", "#88D3B5", "/products/snow-white-base.png", {
     engravingOnLight: true,
   }),
 ];
@@ -150,7 +152,7 @@ export const TUMBLER_COLORS: TumblerColor[] = [
     shortLabel: "Black",
     swatch: "#1A1A1A",
     swatchBackground: "#1A1A1A",
-    image: "/base-black.png",
+    image: "/products/matte-black-base.png",
     body: "linear-gradient(165deg, #2a2a2a 0%, #0d0d0d 45%, #1f1f1f 100%)",
     accent: "#8a8a8a",
     text: "#f5f5f5",
@@ -161,7 +163,7 @@ export const TUMBLER_COLORS: TumblerColor[] = [
     shortLabel: "White",
     swatch: "#F4F4F2",
     swatchBackground: "#F4F4F2",
-    image: "/base-white.png",
+    image: "/products/snow-white-base.png",
     body: "linear-gradient(165deg, #ffffff 0%, #ecece8 48%, #d8d8d2 100%)",
     accent: "#b8b8b0",
     text: "#1a1a1a",
@@ -173,7 +175,7 @@ export const TUMBLER_COLORS: TumblerColor[] = [
     shortLabel: "Pink",
     swatch: "#E8B4B8",
     swatchBackground: "#E8B4B8",
-    image: "/base-pink.png",
+    image: "/products/himalayan-pink-base.png",
     body: "linear-gradient(165deg, #f0c9cd 0%, #d99299 48%, #c47a84 100%)",
     accent: "#f5d4d7",
     text: "#3a1f24",
