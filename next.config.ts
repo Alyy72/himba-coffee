@@ -3,6 +3,8 @@ import path from "path";
 
 const nextConfig: NextConfig = {
   output: "export",
+  // Emit /gallery/index.html so Cloudflare Pages resolves /gallery reliably
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },

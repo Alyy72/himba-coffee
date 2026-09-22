@@ -1,1 +1,2 @@
-/* /index.html 200
+# Cloudflare Pages serves each static Next.js route (gallery.html, store.html, …).
+# Do not SPA-rewrite /* → index.html — that forces every page into a soft 404.
