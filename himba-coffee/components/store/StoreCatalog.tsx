@@ -13,13 +13,14 @@ import {
 import { buildWhatsAppCatalogOrderUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
-type ArrivalTab = "featured" | "best" | "hot";
+type ArrivalTab = "featured" | "best" | "brewing" | "hot";
 
 const GOLD = "#C6A15B";
 
 const ARRIVAL_TABS: { id: ArrivalTab; label: string }[] = [
   { id: "featured", label: "Featured" },
   { id: "best", label: "Best Seller" },
+  { id: "brewing", label: "Brewing" },
   { id: "hot", label: "Hot Sale" },
 ];
 
@@ -138,15 +139,31 @@ export function StoreCatalog() {
   }, []);
   const clock = useCountdown(endOfDay);
 
-  const featured = CATALOG_PRODUCTS.slice(0, 4);
+  const featured = [
+    ...CATALOG_PRODUCTS.filter((p) =>
+      [
+        "pitcher-yak",
+        "pitcher-namaste",
+        "tumbler-matte-black",
+        "coffee-tumbler-bundle",
+      ].includes(p.id),
+    ),
+  ];
   const best = CATALOG_PRODUCTS.filter((p) => p.category === "tumblers");
+  const brewing = CATALOG_PRODUCTS.filter((p) => p.category === "brewing");
   const hot = CATALOG_PRODUCTS.filter((p) => p.priceAed <= 60);
   const grid =
-    tab === "best" ? best : tab === "hot" ? hot : featured;
+    tab === "best"
+      ? best
+      : tab === "brewing"
+        ? brewing
+        : tab === "hot"
+          ? hot
+          : featured;
 
   const deals = [
+    CATALOG_PRODUCTS.find((p) => p.id === "pitcher-yak"),
     CATALOG_PRODUCTS.find((p) => p.id === "v60-kettle"),
-    CATALOG_PRODUCTS.find((p) => p.id === "moka-pot"),
   ].filter(Boolean) as CatalogProduct[];
 
   function openProduct(product: CatalogProduct) {
@@ -219,7 +236,7 @@ export function StoreCatalog() {
               <div className="mt-5">
                 <ShopButton
                   onClick={() => {
-                    setTab("hot");
+                    setTab("brewing");
                     document.getElementById("arrivals")?.scrollIntoView({
                       behavior: "smooth",
                     });
@@ -228,8 +245,8 @@ export function StoreCatalog() {
               </div>
             </div>
             <Image
-              src="/products/v60-kettle.png"
-              alt="Himba V60 kettle"
+              src="/products/pitcher-yak.png"
+              alt="Himba Himalayan Yak pitcher"
               width={180}
               height={220}
               unoptimized
@@ -268,7 +285,11 @@ export function StoreCatalog() {
               <ProductTile
                 key={product.id}
                 product={product}
-                sale={product.priceAed >= 170 || product.id === "coffee-1kg"}
+                sale={
+                  product.priceAed >= 170 ||
+                  product.id === "coffee-1kg" ||
+                  product.id === "pitcher-yak"
+                }
                 onOpen={openProduct}
               />
             ))}

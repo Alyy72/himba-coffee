@@ -118,10 +118,10 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
   {
     id: "pitcher-yak",
     name: "Pitcher — Himalayan Yak",
-    priceAed: 170,
+    priceAed: 150,
     category: "brewing",
     description:
-      "Matte black milk frothing pitcher with laser-etched Himalayan yak emblem — built for latte art.",
+      "Matte black milk frothing pitcher with a white Himalayan yak mark — precision spout for latte art.",
     image: "/products/pitcher-yak.png",
     gallery: ["/products/pitcher-yak.png"],
   },
