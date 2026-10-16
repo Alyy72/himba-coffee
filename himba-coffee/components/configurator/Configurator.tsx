@@ -27,9 +27,9 @@ export function Configurator() {
 
   useEffect(() => {
     const sources = new Set([
-      "/products/matte-black-base.png",
-      "/products/snow-white-base.png",
-      "/products/himalayan-pink-base.png",
+      "/products/matte-black-base.webp",
+      "/products/snow-white-base.webp",
+      "/products/himalayan-pink-base.webp",
       ...TUMBLER_VARIANTS.map((option) => toTumblerVisual(option).image),
     ]);
     sources.forEach((src) => {
@@ -94,9 +94,9 @@ export function Configurator() {
               <p className="text-[11px] tracking-[0.28em] text-white/40 uppercase">
                 Configure
               </p>
-              <h2 className="mt-3 text-[clamp(2rem,4vw,3rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-[#F2F2F2]">
+              <h1 className="mt-3 text-[clamp(2rem,4vw,3rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-[#F2F2F2]">
                 Make it yours.
-              </h2>
+              </h1>
               <p className="mt-5 text-2xl font-medium tracking-[-0.02em] text-[#C8C8C8]">
                 {variant.priceAed} AED
                 <span className="ml-2 text-sm font-normal tracking-[0.12em] text-white/40 uppercase">

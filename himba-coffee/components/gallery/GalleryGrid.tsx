@@ -22,7 +22,7 @@ const SHOTS: GalleryShot[] = [
     setting: "Afternoon light, florals in relief",
     className:
       "min-h-[340px] sm:col-span-2 sm:min-h-[380px] md:col-span-7 md:row-span-2 md:min-h-[520px]",
-    image: "/gallery/lavender-botanical.png",
+    image: "/gallery/lavender-botanical.webp",
     alt: "Himba Coffee Lavender Botanical tumbler in soft violet studio light",
   },
   {
@@ -32,7 +32,7 @@ const SHOTS: GalleryShot[] = [
     setting: "Low light, powder-coat depth",
     className:
       "min-h-[220px] sm:min-h-[240px] md:col-span-5 md:min-h-[248px]",
-    image: "/gallery/matte-black.png",
+    image: "/gallery/matte-black.webp",
     alt: "Himba Coffee Matte Black French Press tumbler against dark backdrop",
   },
   {
@@ -42,7 +42,7 @@ const SHOTS: GalleryShot[] = [
     setting: "Bright field, enamel glow",
     className:
       "min-h-[260px] sm:min-h-[280px] md:col-span-5 md:min-h-[248px]",
-    image: "/gallery/snow-white.png",
+    image: "/gallery/snow-white.webp",
     alt: "Himba Coffee Snow White tumbler on a luminous white field",
   },
   {
@@ -52,7 +52,7 @@ const SHOTS: GalleryShot[] = [
     setting: "Warm cast, sunrise tone",
     className:
       "min-h-[300px] sm:col-span-2 sm:min-h-[320px] md:col-span-12 md:min-h-[300px]",
-    image: "/gallery/himalayan-pink.png",
+    image: "/gallery/himalayan-pink.webp",
     alt: "Himba Coffee Himalayan Pink tumbler with warm blush studio lighting",
   },
 ];

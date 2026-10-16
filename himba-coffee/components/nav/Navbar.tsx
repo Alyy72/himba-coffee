@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,8 @@ const NAV_LINKS = [
 ] as const;
 
 export function Navbar() {
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const menuPanel = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -26,14 +28,23 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") { setOpen(false); menuButton.current?.focus(); }
+      if (e.key === "Tab") {
+        const links = menuPanel.current?.querySelectorAll<HTMLAnchorElement>("a[href]");
+        if (!links?.length) return;
+        const last = links[links.length - 1];
+        if (e.shiftKey && document.activeElement === menuButton.current) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); menuButton.current?.focus(); }
+      }
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
@@ -46,7 +57,7 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: -24, opacity: 0 }}
+        initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-5 sm:pt-4 md:px-6"
@@ -83,6 +94,8 @@ export function Navbar() {
                 <li key={link.href} className="relative">
                   <Link
                     href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    onClick={() => setOpen(false)}
                     className={cn(
                       "relative z-10 block rounded-full px-3.5 py-2 text-[10px] tracking-[0.18em] uppercase transition-colors duration-300 outline-none focus-visible:ring-2 focus-visible:ring-white/70 sm:px-4 sm:text-[11px]",
                       active
@@ -110,7 +123,8 @@ export function Navbar() {
 
           <button
             type="button"
-            className="relative z-10 ml-auto flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/[0.06] text-white/80 transition-colors hover:border-white/25 hover:text-white md:hidden"
+            className="relative z-10 ml-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/12 bg-white/[0.06] text-white/80 transition-colors hover:border-white/25 hover:text-white md:hidden"
+            ref={menuButton}
             aria-expanded={open}
             aria-controls="floating-mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -128,6 +142,7 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={menuPanel}
             id="floating-mobile-nav"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -138,6 +153,7 @@ export function Navbar() {
             <button
               type="button"
               aria-label="Dismiss menu"
+              tabIndex={-1}
               className="absolute inset-0 bg-black/55 backdrop-blur-sm"
               onClick={() => setOpen(false)}
             />
@@ -164,6 +180,8 @@ export function Navbar() {
                     >
                       <Link
                         href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    onClick={() => setOpen(false)}
                         className={cn(
                           "flex items-center justify-between rounded-2xl px-4 py-3.5 text-[12px] tracking-[0.2em] uppercase transition-colors",
                           active

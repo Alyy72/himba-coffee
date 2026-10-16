@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
@@ -25,15 +25,26 @@ export function ProductInspectModal({
   onSelectImage,
   children,
 }: ProductInspectModalProps) {
+  const panel = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open) return;
+    const previous = document.activeElement as HTMLElement | null;
+    panel.current?.querySelector<HTMLElement>("button")?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "Tab") {
+        const items = panel.current?.querySelectorAll<HTMLElement>("button, a[href], input, select, textarea, [tabindex=\"0\"]");
+        if (!items?.length) return;
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
     };
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      previous?.focus();
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
     };
@@ -57,6 +68,7 @@ export function ProductInspectModal({
           />
 
           <motion.div
+            ref={panel}
             role="dialog"
             aria-modal="true"
             aria-label={title}

@@ -6,9 +6,9 @@ export const WHATSAPP_NUMBER = "971542943920";
 export const ENGRAVING_MAX_LENGTH = 16;
 
 export type BaseBottleImage =
-  | "/products/matte-black-base.png"
-  | "/products/snow-white-base.png"
-  | "/products/himalayan-pink-base.png";
+  | "/products/matte-black-base.webp"
+  | "/products/snow-white-base.webp"
+  | "/products/himalayan-pink-base.webp";
 
 export type TumblerColor = {
   id: TumblerColorId;
@@ -21,7 +21,7 @@ export type TumblerColor = {
   /** CSS background for the circular swatch (solids or subtle textures) */
   swatchBackground: string;
   /** Public path to the product base photo */
-  image: `/${string}.png`;
+  image: `/${string}.${"png" | "webp"}`;
   body: string;
   accent: string;
   text: string;
@@ -38,7 +38,7 @@ export type TumblerVariant = {
   id: number;
   name: string;
   /** Real product photo in /public */
-  image: `/${string}.png`;
+  image: `/${string}.${"png" | "webp"}`;
   /** Fallback product photo if a variant PNG is missing */
   baseImage: BaseBottleImage;
   category: TumblerVariantCategoryId;
@@ -53,7 +53,7 @@ export type TumblerVariant = {
 export type TumblerVisual = {
   id: string;
   label: string;
-  image: `/${string}.png`;
+  image: `/${string}.${"png" | "webp"}`;
   /** Soft colorize over the real bottle when a dedicated photo is missing */
   tint?: string;
   engravingOnLight?: boolean;
@@ -83,7 +83,7 @@ function variant(
   category: TumblerVariantCategoryId,
   swatch: string,
   baseImage: BaseBottleImage,
-  options?: { engravingOnLight?: boolean; image?: `/${string}.png` },
+  options?: { engravingOnLight?: boolean; image?: `/${string}.${"png" | "webp"}` },
 ): TumblerVariant {
   return {
     id,
@@ -98,25 +98,25 @@ function variant(
 }
 
 export const TUMBLER_VARIANTS: TumblerVariant[] = [
-  variant(2, "Silver Leopard", "leopard-prints", "#B8B8B8", "/products/matte-black-base.png"),
-  variant(3, "Ocean Blue Leopard", "leopard-prints", "#46A0D8", "/products/snow-white-base.png", {
+  variant(2, "Silver Leopard", "leopard-prints", "#B8B8B8", "/products/matte-black-base.webp"),
+  variant(3, "Ocean Blue Leopard", "leopard-prints", "#46A0D8", "/products/snow-white-base.webp", {
     engravingOnLight: true,
   }),
-  variant(4, "Royal Purple Leopard", "leopard-prints", "#5F2840", "/products/matte-black-base.png"),
-  variant(5, "Rainbow Neon", "leopard-prints", "#FF78B4", "/products/matte-black-base.png"),
-  variant(6, "Lavender Botanical", "soft-botanical", "#D2BEE1", "/products/snow-white-base.png", {
+  variant(4, "Royal Purple Leopard", "leopard-prints", "#5F2840", "/products/matte-black-base.webp"),
+  variant(5, "Rainbow Neon", "leopard-prints", "#FF78B4", "/products/matte-black-base.webp"),
+  variant(6, "Lavender Botanical", "soft-botanical", "#D2BEE1", "/products/snow-white-base.webp", {
     engravingOnLight: true,
-    image: "/products/lavender-botanical-variant.png",
+    image: "/products/lavender-botanical-variant.webp",
   }),
-  variant(7, "Himalayan Pink", "soft-botanical", "#F895AB", "/products/himalayan-pink-base.png", {
+  variant(7, "Himalayan Pink", "soft-botanical", "#F895AB", "/products/himalayan-pink-base.webp", {
     engravingOnLight: true,
-    image: "/products/himalayan-pink-variant.png",
+    image: "/products/himalayan-pink-variant.webp",
   }),
-  variant(8, "Deep Navy", "solids-metallics", "#142850", "/products/matte-black-base.png"),
-  variant(9, "Burgundy", "solids-metallics", "#4C0A16", "/products/matte-black-base.png"),
-  variant(10, "Crimson Metallic", "solids-metallics", "#6E0A14", "/products/matte-black-base.png"),
-  variant(11, "Rose Copper", "solids-metallics", "#AA796A", "/products/himalayan-pink-base.png"),
-  variant(12, "Mint Green", "soft-botanical", "#88D3B5", "/products/snow-white-base.png", {
+  variant(8, "Deep Navy", "solids-metallics", "#142850", "/products/matte-black-base.webp"),
+  variant(9, "Burgundy", "solids-metallics", "#4C0A16", "/products/matte-black-base.webp"),
+  variant(10, "Crimson Metallic", "solids-metallics", "#6E0A14", "/products/matte-black-base.webp"),
+  variant(11, "Rose Copper", "solids-metallics", "#AA796A", "/products/himalayan-pink-base.webp"),
+  variant(12, "Mint Green", "soft-botanical", "#88D3B5", "/products/snow-white-base.webp", {
     engravingOnLight: true,
   }),
 ];
@@ -152,7 +152,7 @@ export const TUMBLER_COLORS: TumblerColor[] = [
     shortLabel: "Black",
     swatch: "#1A1A1A",
     swatchBackground: "#1A1A1A",
-    image: "/products/matte-black-base.png",
+    image: "/products/matte-black-base.webp",
     body: "linear-gradient(165deg, #2a2a2a 0%, #0d0d0d 45%, #1f1f1f 100%)",
     accent: "#8a8a8a",
     text: "#f5f5f5",
@@ -163,7 +163,7 @@ export const TUMBLER_COLORS: TumblerColor[] = [
     shortLabel: "White",
     swatch: "#F4F4F2",
     swatchBackground: "#F4F4F2",
-    image: "/products/snow-white-base.png",
+    image: "/products/snow-white-base.webp",
     body: "linear-gradient(165deg, #ffffff 0%, #ecece8 48%, #d8d8d2 100%)",
     accent: "#b8b8b0",
     text: "#1a1a1a",
@@ -175,7 +175,7 @@ export const TUMBLER_COLORS: TumblerColor[] = [
     shortLabel: "Pink",
     swatch: "#E8B4B8",
     swatchBackground: "#E8B4B8",
-    image: "/products/himalayan-pink-base.png",
+    image: "/products/himalayan-pink-base.webp",
     body: "linear-gradient(165deg, #f0c9cd 0%, #d99299 48%, #c47a84 100%)",
     accent: "#f5d4d7",
     text: "#3a1f24",

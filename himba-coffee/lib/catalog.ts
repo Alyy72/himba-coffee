@@ -53,8 +53,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 99,
     category: "tumblers",
     description: "French Press travel tumbler in matte black. Steep. Press. Enjoy.",
-    image: "/products/matte-black-tumbler.png",
-    gallery: ["/products/matte-black-tumbler.png"],
+    image: "/products/matte-black-tumbler.webp",
+    gallery: ["/products/matte-black-tumbler.webp"],
   },
   {
     id: "tumbler-snow-white",
@@ -62,8 +62,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 99,
     category: "tumblers",
     description: "French Press travel tumbler in Snow White with black lid accents.",
-    image: "/products/snow-white-tumbler.png",
-    gallery: ["/products/snow-white-tumbler.png"],
+    image: "/products/snow-white-tumbler.webp",
+    gallery: ["/products/snow-white-tumbler.webp"],
   },
   {
     id: "tumbler-himalayan-pink",
@@ -71,8 +71,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 99,
     category: "tumblers",
     description: "French Press travel tumbler in Himalayan Pink.",
-    image: "/products/himalayan-pink-tumbler.png",
-    gallery: ["/products/himalayan-pink-tumbler.png"],
+    image: "/products/himalayan-pink-tumbler.webp",
+    gallery: ["/products/himalayan-pink-tumbler.webp"],
   },
   {
     id: "coffee-tumbler-bundle",
@@ -81,8 +81,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     category: "tumblers",
     description:
       "Himba whole-bean coffee paired with a matching French Press tumbler — the complete ritual.",
-    image: "/products/bundle-black.png",
-    gallery: ["/products/bundle-black.png", "/products/bundle-white.png"],
+    image: "/products/bundle-black.webp",
+    gallery: ["/products/bundle-black.webp", "/products/bundle-white.webp"],
     options: [
       {
         kind: "color",
@@ -93,13 +93,13 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
             id: "black",
             label: "Matte Black",
             swatch: "#111111",
-            image: "/products/bundle-black.png",
+            image: "/products/bundle-black.webp",
           },
           {
             id: "white",
             label: "Snow White",
             swatch: "#F4F4F2",
-            image: "/products/bundle-white.png",
+            image: "/products/bundle-white.webp",
           },
         ],
       },
@@ -112,8 +112,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     category: "brewing",
     description:
       "Matte black milk frothing pitcher with laser-etched Namaste mountain mark — built for latte art.",
-    image: "/products/pitcher-namaste.png",
-    gallery: ["/products/pitcher-namaste.png"],
+    image: "/products/pitcher-namaste.webp",
+    gallery: ["/products/pitcher-namaste.webp"],
   },
   {
     id: "pitcher-yak",
@@ -122,8 +122,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     category: "brewing",
     description:
       "Matte black milk frothing pitcher with a white Himalayan yak mark — precision spout for latte art.",
-    image: "/products/pitcher-yak.png",
-    gallery: ["/products/pitcher-yak.png"],
+    image: "/products/pitcher-yak.webp",
+    gallery: ["/products/pitcher-yak.webp"],
   },
   {
     id: "v60-pot",
@@ -131,8 +131,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 40,
     category: "brewing",
     description: "Heat-resistant glass server for clean pour-over brewing.",
-    image: "/products/v60-pot.png",
-    gallery: ["/products/v60-pot.png"],
+    image: "/products/v60-pot.webp",
+    gallery: ["/products/v60-pot.webp"],
   },
   {
     id: "v60-dripper-plastic",
@@ -140,8 +140,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 25,
     category: "brewing",
     description: "Lightweight clear dripper with spiral ridges and black base.",
-    image: "/products/v60-dripper-plastic.png",
-    gallery: ["/products/v60-dripper-plastic.png"],
+    image: "/products/v60-dripper-plastic.webp",
+    gallery: ["/products/v60-dripper-plastic.webp"],
   },
   {
     id: "v60-dripper-ceramic",
@@ -149,10 +149,10 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 40,
     category: "brewing",
     description: "Glazed ceramic V60 dripper for a premium pour-over ritual.",
-    image: "/products/v60-dripper-ceramic.png",
+    image: "/products/v60-dripper-ceramic.webp",
     gallery: [
-      "/products/v60-dripper-ceramic.png",
-      "/products/v60-dripper-ceramic-colors.png",
+      "/products/v60-dripper-ceramic.webp",
+      "/products/v60-dripper-ceramic-colors.webp",
     ],
   },
   {
@@ -161,8 +161,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 25,
     category: "brewing",
     description: "Compact gooseneck kettle for precise V60 pouring control.",
-    image: "/products/v60-kettle.png",
-    gallery: ["/products/v60-kettle.png", "/products/v60-kettle-alt.png"],
+    image: "/products/v60-kettle.webp",
+    gallery: ["/products/v60-kettle.webp", "/products/v60-kettle-alt.webp"],
   },
   {
     id: "grind",
@@ -170,8 +170,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 60,
     category: "brewing",
     description: "Himba whole-bean coffee — born in the Himalayas, roasted for everywhere.",
-    image: "/products/grind.png",
-    gallery: ["/products/grind.png"],
+    image: "/products/grind.webp",
+    gallery: ["/products/grind.webp"],
   },
   {
     id: "coffee-1kg",
@@ -180,8 +180,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     category: "brewing",
     description:
       "A full kilo of Himba whole-bean coffee — matte black bag, mountain mark, ready for every brew.",
-    image: "/products/coffee-1kg.png",
-    gallery: ["/products/coffee-1kg.png"],
+    image: "/products/coffee-1kg.webp",
+    gallery: ["/products/coffee-1kg.webp"],
   },
   {
     id: "moka-pot",
@@ -189,8 +189,8 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     priceAed: 45,
     category: "brewing",
     description: "Stovetop espresso maker with matte body and wood accents.",
-    image: "/products/moka-pot.png",
-    gallery: ["/products/moka-pot.png", "/products/moka-pot-red.png"],
+    image: "/products/moka-pot.webp",
+    gallery: ["/products/moka-pot.webp", "/products/moka-pot-red.webp"],
   },
 ];
 
