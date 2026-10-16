@@ -72,3 +72,9 @@ body {
     drop-shadow(0 -0.5px 0 rgba(0, 0, 0, 0.35));
   opacity: 0.88;
 }
+
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

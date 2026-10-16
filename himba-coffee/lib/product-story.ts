@@ -71,8 +71,8 @@ export const STORY_TUMBLERS: StoryTumbler[] = [
     finish: "Soft matte enamel",
     story:
       "A quiet canvas for the morning ritual. Fingerprint-resistant enamel that reads luminous under cafe light — minimal, focused, ready for the day.",
-    image: "/products/snow-white-tumbler.png",
-    lifestyleImage: "/gallery/snow-white.png",
+    image: "/products/snow-white-tumbler.webp",
+    lifestyleImage: "/gallery/snow-white.webp",
     accent: "#E8E8E4",
     bodyTone: "#F4F4F2",
     strawTone: "#F0F0EC",
@@ -154,8 +154,8 @@ export const STORY_TUMBLERS: StoryTumbler[] = [
     finish: "Rugged powder coat",
     story:
       "Understated power for the long road. Deep powder coat that hides the miles — bold, travel-ready, and built to disappear into the night skyline.",
-    image: "/products/matte-black-tumbler.png",
-    lifestyleImage: "/gallery/matte-black.png",
+    image: "/products/matte-black-tumbler.webp",
+    lifestyleImage: "/gallery/matte-black.webp",
     accent: "#3A3A3A",
     bodyTone: "#141414",
     strawTone: "#1A1A1A",
@@ -237,8 +237,8 @@ export const STORY_TUMBLERS: StoryTumbler[] = [
     finish: "Floral print on soft lavender",
     story:
       "A pause in the afternoon rush. Soft lavender with botanical florals that catch light like petals — dreamy, intentional, unmistakably Himba.",
-    image: "/products/lavender-botanical-tumbler.png",
-    lifestyleImage: "/gallery/lavender-botanical.png",
+    image: "/products/lavender-botanical-tumbler.webp",
+    lifestyleImage: "/gallery/lavender-botanical.webp",
     accent: "#D2BEE1",
     bodyTone: "#C8B4D8",
     strawTone: "#B8A0CC",
@@ -324,8 +324,8 @@ export const STORY_TUMBLERS: StoryTumbler[] = [
     finish: "Warm matte blush",
     story:
       "Born of mountain light. A warm matte blush that feels like sunrise on snow — playful, gentle, and made for sweet sips between meetings.",
-    image: "/products/himalayan-pink-tumbler.png",
-    lifestyleImage: "/gallery/himalayan-pink.png",
+    image: "/products/himalayan-pink-tumbler.webp",
+    lifestyleImage: "/gallery/himalayan-pink.webp",
     accent: "#E8B4B8",
     bodyTone: "#E8B4B8",
     strawTone: "#D99299",

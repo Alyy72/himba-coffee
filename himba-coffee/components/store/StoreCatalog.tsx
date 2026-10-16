@@ -32,7 +32,6 @@ function useCountdown(target: Date) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
-    setNow(Date.now());
     const id = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(id);
   }, []);
@@ -65,7 +64,7 @@ function ShopButton({
   onClick?: () => void;
 }) {
   const className =
-    "inline-flex h-9 items-center px-4 text-[11px] font-medium tracking-[0.08em] text-white uppercase";
+    "inline-flex h-9 items-center px-4 text-[11px] font-medium tracking-[0.08em] text-[#111111] uppercase";
   const style = { background: GOLD };
   if (onClick) {
     return (
@@ -99,7 +98,7 @@ function ProductTile({
       >
         {sale ? (
           <span
-            className="absolute top-3 left-3 z-10 px-2 py-1 text-[10px] font-medium tracking-[0.08em] text-white uppercase"
+            className="absolute top-3 left-3 z-10 px-2 py-1 text-[10px] font-medium tracking-[0.08em] text-[#111111] uppercase"
             style={{ background: GOLD }}
           >
             Sale
@@ -119,7 +118,7 @@ function ProductTile({
         <div className="mt-2 flex justify-center">
           <Stars />
         </div>
-        <p className="mt-2 text-sm font-medium" style={{ color: GOLD }}>
+        <p className="mt-2 text-sm font-medium" style={{ color: "#806020" }}>
           {money(product.priceAed)}
         </p>
       </div>
@@ -179,7 +178,7 @@ export function StoreCatalog() {
         {/* Hero */}
         <section className="grid items-center gap-8 bg-[#111111] px-8 py-12 text-white md:grid-cols-2 md:px-14 md:py-16">
           <div>
-            <p className="text-sm" style={{ color: GOLD }}>
+            <p className="text-sm" style={{ color: "#806020" }}>
               The Himba ritual
             </p>
             <h1 className="mt-3 max-w-md text-4xl leading-[1.1] font-medium tracking-[-0.03em] md:text-5xl">
@@ -195,7 +194,7 @@ export function StoreCatalog() {
           </div>
           <div className="relative h-64 md:h-80">
             <Image
-              src="/products/tumbler-black-lifestyle.png"
+              src="/products/tumbler-black-lifestyle.webp"
               alt="Himba Matte Black French Press tumbler"
               fill
               priority
@@ -219,7 +218,7 @@ export function StoreCatalog() {
               </div>
             </div>
             <Image
-              src="/products/matte-black-tumbler.png"
+              src="/products/matte-black-tumbler.webp"
               alt="Himba Matte Black tumbler"
               width={180}
               height={220}
@@ -245,7 +244,7 @@ export function StoreCatalog() {
               </div>
             </div>
             <Image
-              src="/products/pitcher-yak.png"
+              src="/products/pitcher-yak.webp"
               alt="Himba Himalayan Yak pitcher"
               width={180}
               height={220}
@@ -317,7 +316,7 @@ export function StoreCatalog() {
             </div>
           </div>
           <Image
-            src="/products/bundle-black.png"
+            src="/products/bundle-black.webp"
             alt="Himba coffee and tumbler bundle"
             width={420}
             height={280}
@@ -335,7 +334,7 @@ export function StoreCatalog() {
             {deals.map((product) => (
               <article
                 key={product.id}
-                className="grid grid-cols-[140px_1fr] items-center gap-4 bg-white p-4 sm:grid-cols-[180px_1fr]"
+                className="grid grid-cols-1 min-[480px]:grid-cols-[140px_minmax(0,1fr)] items-center gap-4 bg-white p-4 sm:grid-cols-[180px_minmax(0,1fr)]"
               >
                 <button
                   type="button"
@@ -343,7 +342,7 @@ export function StoreCatalog() {
                   className="relative aspect-square"
                 >
                   <span
-                    className="absolute top-2 left-2 z-10 px-2 py-1 text-[10px] font-medium text-white uppercase"
+                    className="absolute top-2 left-2 z-10 px-2 py-1 text-[10px] font-medium text-[#111111] uppercase"
                     style={{ background: GOLD }}
                   >
                     Sale
@@ -360,10 +359,10 @@ export function StoreCatalog() {
                   <h3 className="text-base font-medium">
                     {catalogDisplayName(product)}
                   </h3>
-                  <p className="mt-2 text-sm font-medium" style={{ color: GOLD }}>
+                  <p className="mt-2 text-sm font-medium" style={{ color: "#806020" }}>
                     {money(product.priceAed)}
                   </p>
-                  <div className="mt-4 flex gap-2">
+                  <div className="mt-4 grid grid-cols-4 gap-2">
                     {(
                       [
                         ["Days", clock.days],
@@ -372,11 +371,11 @@ export function StoreCatalog() {
                         ["Secs", clock.secs],
                       ] as const
                     ).map(([label, value]) => (
-                      <div key={label} className="min-w-12 text-center">
+                      <div key={label} className="min-w-0 text-center">
                         <div className="bg-[#111111] px-2 py-2 text-sm font-medium text-white">
                           {String(value).padStart(2, "0")}
                         </div>
-                        <p className="mt-1 text-[10px] tracking-[0.08em] text-black/40 uppercase">
+                        <p className="mt-1 text-[10px] tracking-[0.08em] text-black/65 uppercase">
                           {label}
                         </p>
                       </div>
