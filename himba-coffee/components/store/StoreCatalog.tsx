@@ -131,6 +131,7 @@ export function StoreCatalog() {
   const [tab, setTab] = useState<ArrivalTab>("featured");
   const [open, setOpen] = useState<CatalogProduct | null>(null);
   const [activeImage, setActiveImage] = useState("");
+  const [selection, setSelection] = useState<Record<string, string>>({});
 
   const endOfDay = useMemo(() => {
     const date = new Date();
@@ -168,10 +169,16 @@ export function StoreCatalog() {
 
   function openProduct(product: CatalogProduct) {
     setActiveImage(product.image);
+    setSelection({});
     setOpen(product);
   }
 
-  const orderUrl = open ? buildWhatsAppCatalogOrderUrl(open) : "#";
+  const missingSize = Boolean(
+    open?.options?.some((opt) => opt.required && !selection[opt.kind]),
+  );
+  const orderUrl = open
+    ? buildWhatsAppCatalogOrderUrl(open, selection)
+    : "#";
 
   return (
     <div className="bg-[#F3F3F3] text-[#1a1a1a]">
@@ -245,8 +252,8 @@ export function StoreCatalog() {
               </div>
             </div>
             <Image
-              src="/products/pitcher-yak.png"
-              alt="Himba Himalayan Yak pitcher"
+              src="/products/pitcher-himba-gear-lifestyle.jpg"
+              alt="Himba Gear stainless pitcher"
               width={180}
               height={220}
               unoptimized
@@ -405,11 +412,53 @@ export function StoreCatalog() {
             <p className="mb-6 text-xl font-medium text-[#F2F2F2]">
               {money(open.priceAed)}
             </p>
+            {open.options?.map((opt) => (
+              <div key={opt.kind} className="mb-6">
+                <p className="mb-3 text-[11px] tracking-[0.2em] text-white/45 uppercase">
+                  {opt.label}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {opt.choices.map((choice) => {
+                    const selected = selection[opt.kind] === choice.label;
+                    return (
+                      <button
+                        key={choice.id}
+                        type="button"
+                        aria-pressed={selected}
+                        onClick={() =>
+                          setSelection((prev) => ({
+                            ...prev,
+                            [opt.kind]: choice.label,
+                          }))
+                        }
+                        className={cn(
+                          "inline-flex h-10 items-center border px-4 text-xs tracking-[0.14em] uppercase",
+                          selected
+                            ? "border-white bg-white text-[#0A0A0A]"
+                            : "border-white/20 text-white/70 hover:border-white/45 hover:text-white",
+                        )}
+                      >
+                        {choice.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
             <a
-              href={orderUrl}
+              href={missingSize ? undefined : orderUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-12 w-full items-center justify-center gap-2 bg-[#F2F2F2] text-[11px] font-medium tracking-[0.16em] text-[#0A0A0A] uppercase hover:bg-white"
+              aria-disabled={missingSize}
+              onClick={(event) => {
+                if (missingSize) event.preventDefault();
+              }}
+              className={cn(
+                "inline-flex h-12 w-full items-center justify-center gap-2 text-[11px] font-medium tracking-[0.16em] uppercase",
+                missingSize
+                  ? "cursor-not-allowed border border-white/10 text-white/25"
+                  : "bg-[#F2F2F2] text-[#0A0A0A] hover:bg-white",
+              )}
             >
               <MessageCircle className="h-4 w-4" />
               Order via WhatsApp

@@ -46,6 +46,18 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   },
 ];
 
+const PITCHER_SIZES: CatalogProduct["options"] = [
+  {
+    kind: "size",
+    label: "Size",
+    required: true,
+    choices: [
+      { id: "700", label: "700 ml" },
+      { id: "615", label: "615 ml" },
+    ],
+  },
+];
+
 export const CATALOG_PRODUCTS: CatalogProduct[] = [
   {
     id: "tumbler-matte-black",
@@ -108,22 +120,30 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
   {
     id: "pitcher-namaste",
     name: "Pitcher — Namaste",
-    priceAed: 170,
-    category: "brewing",
-    description:
-      "Matte black milk frothing pitcher with laser-etched Namaste mountain mark — built for latte art.",
-    image: "/products/pitcher-namaste.png",
-    gallery: ["/products/pitcher-namaste.png"],
-  },
-  {
-    id: "pitcher-yak",
-    name: "Pitcher — Himalayan Yak",
     priceAed: 150,
     category: "brewing",
     description:
-      "Matte black milk frothing pitcher with a white Himalayan yak mark — precision spout for latte art.",
-    image: "/products/pitcher-yak.png",
-    gallery: ["/products/pitcher-yak.png"],
+      "Brushed stainless milk pitcher with a Namaste mountain mark. Available in 700 ml and 615 ml.",
+    image: "/products/pitcher-namaste.png",
+    gallery: [
+      "/products/pitcher-namaste.png",
+      "/products/pitcher-namaste-lifestyle.jpg",
+    ],
+    options: PITCHER_SIZES,
+  },
+  {
+    id: "pitcher-yak",
+    name: "Pitcher — Himba Gear",
+    priceAed: 150,
+    category: "brewing",
+    description:
+      "Brushed stainless milk pitcher with the Himba Gear mark. Available in 700 ml and 615 ml.",
+    image: "/products/pitcher-himba-gear.png",
+    gallery: [
+      "/products/pitcher-himba-gear.png",
+      "/products/pitcher-himba-gear-lifestyle.jpg",
+    ],
+    options: PITCHER_SIZES,
   },
   {
     id: "v60-pot",
